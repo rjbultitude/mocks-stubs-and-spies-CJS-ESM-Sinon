@@ -1,0 +1,25 @@
+{
+  "name": "same-module-stubs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "author": "Richard Bultitude",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive **/*.spec.js",
+    "start": "http-server"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "http-server": "^0.12.3",
+    "mocha": "^8.3.0",
+    "sinon": "^9.2.4",
+    "sinon-chai": "^3.5.0"
+  },
+  "mocha": {
+    "watch-files": [
+      "**/*.spec.js"
+    ]
+  }
+}
