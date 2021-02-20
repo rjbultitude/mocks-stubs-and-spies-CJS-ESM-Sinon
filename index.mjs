@@ -1,5 +1,3 @@
-import * as moduleA from './module_A.mjs';
+import * as selfImportMod from './examples/self_import_example.mjs';
 
-moduleA.someFn('some text');
-moduleA.testFn();
-moduleA.exTestFn();
+selfImportMod.someFn('some text');
