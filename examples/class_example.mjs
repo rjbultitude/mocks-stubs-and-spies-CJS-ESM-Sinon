@@ -1,3 +1,5 @@
+import { ExternalClass } from './module_B.mjs';
+
 export class ModuleClass {
   someFn(str) {
     console.log('str', str);
@@ -7,10 +9,11 @@ export class ModuleClass {
   testFn() {
     return this.someFn('real function call');
   }
+
+  exTestFn() {
+    const extDepClass = new ExternalClass();
+    console.log('ext dep method called');
+    return extDepClass.externalDep();
+  }
 }
 
-export function exTestClassFn() {
-  console.log('ext dep method called');
-  const extDepClass = new ModuleBClass();
-  return extDepClass.testFn();
-}

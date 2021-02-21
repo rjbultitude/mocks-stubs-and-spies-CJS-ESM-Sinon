@@ -5,14 +5,13 @@ export function someFn(str) {
   return str;
 }
 
-// Dependency injection
-export function depInjtestFn(_someFn = someFn) {
+export function testFn(_someFn = someFn) {
   const realStr = 'real function call';
   console.log('realStr', realStr);
   return _someFn(realStr);
 }
 
-export function exTestFn() {
+export function exTestFn(_externalDep = externalDep) {
   console.log('ext dep called');
-  externalDep();
+  return _externalDep();
 }
