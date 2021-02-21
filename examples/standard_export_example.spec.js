@@ -2,23 +2,21 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import { namespaceMod } from './namespace_example.js';
-import { modBMethods } from './module_B.js';
+import * as stndExportMod from './standard_export_example.js';
+import * as module_B from './module_B.js';
 import { EXT_DEP_STR } from '../utils/constants.js';
-console.log('modBMethods', modBMethods);
-console.log('modBMethods.externalDep()', modBMethods.externalDep());
 
-describe('namespace example someFn', function() {
+describe('standard export example someFn', function() {
   it('should return arg', function() {
     const testString = 'test string';
-    expect(namespaceMod.someFn(testString)).to.equal(testString);
+    expect(stndExportMod.someFn(testString)).to.equal(testString);
   });
 });
 
-describe('namespace example testFn', function() {
+describe('standard export example testFn', function() {
   beforeEach(function() {
-    this.someFnStub = sinon.stub(namespaceMod, 'someFn').returns('not real');
-    this.result = namespaceMod.testFn(this.someFnStub);
+    this.someFnStub = sinon.stub(stndExportMod, 'someFn').returns('not real');
+    this.result = stndExportMod.testFn(this.someFnStub);
   });
   afterEach(function() {
     this.someFnStub.restore();
@@ -31,20 +29,19 @@ describe('namespace example testFn', function() {
   });
 });
 
-describe('namespace example exTestFn', function() {
+describe('standard export example exTestFn', function() {
   beforeEach(function() {
-    this.externalDepSpy = sinon.spy(modBMethods, 'externalDep');
-    console.log('externalDepSpy', externalDepSpy);
+    this.externalDepSpy = sinon.spy(module_B, 'externalDep');
   });
   afterEach(function() {
     this.externalDepSpy.restore();
   });
   it('should call externalDep', function() {
-    namespaceMod.exTestFn();
+    stndExportMod.exTestFn();
     expect(this.externalDepSpy).called;
   });
   it('should return ', function() {
-    const result = namespaceMod.exTestFn();
+    const result = stndExportMod.exTestFn();
     expect(result).to.equal(EXT_DEP_STR);
   });
 });

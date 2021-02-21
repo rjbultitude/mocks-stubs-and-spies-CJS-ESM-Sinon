@@ -10,6 +10,8 @@ export class ExternalClass {
   }
 }
 
-export const modB = {
+export const modBMethods = {
   externalDep,
 };
+
+export default modBMethods;

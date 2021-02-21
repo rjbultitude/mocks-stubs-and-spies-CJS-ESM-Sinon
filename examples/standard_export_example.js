@@ -1,4 +1,4 @@
-import modB, { externalDep } from './module_b.js';
+import { externalDep } from './module_b.js';
 
 export function someFn(str) {
   console.log('str', str);
@@ -8,16 +8,10 @@ export function someFn(str) {
 export function testFn() {
   const realStr = 'real function call';
   console.log('realStr', realStr);
-  return namespaceMod.someFn(realStr);
+  return someFn(realStr);
 }
 
 export function exTestFn() {
   console.log('ext dep called');
   return externalDep();
 }
-
-export const namespaceMod = {
-  someFn,
-  testFn,
-  exTestFn,
-};
