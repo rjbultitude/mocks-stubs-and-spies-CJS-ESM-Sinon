@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "author": "Richard Bultitude",
   "license": "MIT",
   "scripts": {
@@ -11,6 +10,9 @@
     "start": "http-server"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/register": "^7.12.13",
     "chai": "^4.3.0",
     "http-server": "^0.12.3",
     "mocha": "^8.3.0",
@@ -20,6 +22,9 @@
   "mocha": {
     "watch-files": [
       "**/*.spec.js"
+    ],
+    "require": [
+      "@babel/register"
     ]
   }
 }

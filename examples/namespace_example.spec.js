@@ -2,9 +2,9 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import { nameSpaceMod } from './namespace_example.mjs';
-import { modB } from './module_B.mjs';
-import { EXT_DEP_STR } from '../utils/constants.mjs';
+import { nameSpaceMod } from './namespace_example.js';
+import { modB } from './module_B.js';
+import { EXT_DEP_STR } from '../utils/constants.js';
 
 describe('namespace example someFn', function() {
   it('should return arg', function() {

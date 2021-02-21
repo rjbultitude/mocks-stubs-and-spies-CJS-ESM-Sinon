@@ -2,8 +2,8 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import * as classMod from './class_example.mjs';
-import { EXT_DEP_STR } from '../utils/constants.mjs';
+import * as classMod from './class_example.js';
+import { EXT_DEP_STR } from '../utils/constants.js';
 
 describe('class example someFn', function() {
   it('should return arg', function() {

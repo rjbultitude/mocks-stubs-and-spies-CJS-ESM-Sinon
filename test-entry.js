@@ -1,5 +1,5 @@
 import { Spy } from './spy.js';
-import * as module_A from './module_A.mjs';
+import * as module_A from './module_A.js';
 
 console.log(module_A.someFn);
 

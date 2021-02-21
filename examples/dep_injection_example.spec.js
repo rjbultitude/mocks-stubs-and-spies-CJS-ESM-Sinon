@@ -2,8 +2,8 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import * as depInjectionMod from './dep_injection_example.mjs';
-import * as modB from './module_B.mjs';
+import * as depInjectionMod from './dep_injection_example.js';
+import * as modB from './module_B.js';
 
 describe('dependency injection example someFn', function() {
   it('should return arg', function() {
