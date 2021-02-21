@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 import * as selfImportMod from './self_import_example.mjs';
+import * as module_B from './module_B.mjs';
 
 describe('self import someFn', function() {
   it('should return arg', function() {
@@ -12,10 +13,33 @@ describe('self import someFn', function() {
 });
 
 describe('self import testFn', function() {
+  beforeEach(function() {
+    this.someFnStub = sinon.stub(selfImportMod, 'someFn').returns('not real');
+    this.result = selfImportMod.testFn();
+  });
+  afterEach(function() {
+    this.someFnStub.restore();
+  });
   it('should call someFn', function() {
-    const someFnStub = sinon.stub(selfImportMod, 'someFn').returns('not real');
-    const result = selfImportMod.testFn();
-    expect(someFnStub).called;
-    expect(result).to.equal('not real');
+    expect(this.someFnStub).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal('not real');
+  });
+});
+
+describe('namespace example exTestFn', function() {
+  beforeEach(function() {
+    this.externalDepSpy = sinon.spy(module_B, 'externalDep');
+    this.result = selfImportMod.exTestFn();
+  });
+  afterEach(function() {
+    this.externalDepSpy.restore();
+  });
+  it('should call externalDep', function() {
+    expect(this.externalDepSpy).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal(EXT_DEP_STR);
   });
 });

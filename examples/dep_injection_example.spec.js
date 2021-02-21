@@ -13,20 +13,28 @@ describe('dependency injection example someFn', function() {
 });
 
 describe('dependency injection example testFn', function() {
+  beforeEach(function() {
+    this.someFnStub = sinon.stub().returns('not real');
+    this.result = depInjectionMod.testFn(this.someFnStub);
+  });
   it('should call someFn', function() {
-    const someFnStub = sinon.stub().returns('not real');
-    const result = depInjectionMod.testFn(someFnStub);
-    expect(someFnStub).called;
-    expect(result).to.equal('not real');
+    expect(this.someFnStub).called;
+  });
+  it('should return "not real" string', function() {
+    expect(this.result).to.equal('not real');
   });
 });
 
 describe('dependency injection example exTestFn', function() {
+  beforeEach(function() {
+    this.extDepString = 'not real ext dep';
+    this.externalDepStub = sinon.stub().returns(this.extDepString);
+    this.result = depInjectionMod.exTestFn(this.externalDepStub);
+  });
   it('should call externalDep', function() {
-    const extDepString = 'not real ext dep';
-    const externalDepStub = sinon.stub().returns(extDepString);
-    const result = depInjectionMod.exTestFn(externalDepStub);
-    expect(externalDepStub).called;
-    expect(result).to.equal(extDepString);
+    expect(this.externalDepStub).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal(this.extDepString);
   });
 });

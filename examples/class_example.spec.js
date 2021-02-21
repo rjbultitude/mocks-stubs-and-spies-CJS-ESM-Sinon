@@ -14,19 +14,35 @@ describe('class example someFn', function() {
 });
 
 describe('class example testFn', function() {
+  beforeEach(function() {
+    this.classObj = new classMod.ModuleClass();
+    this.someFnStub = sinon.stub(this.classObj, 'someFn').returns('not real');
+    this.result = this.classObj.testFn();
+  });
+  afterEach(function() {
+    this.someFnStub.restore();
+  });
   it('should call someFn', function() {
-    const classObj = new classMod.ModuleClass();
-    const someFnStub = sinon.stub(classObj, 'someFn').returns('not real');
-    const result = classObj.testFn();
-    expect(someFnStub).called;
-    expect(result).to.equal('not real');
+    expect(this.someFnStub).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal('not real');
   });
 });
 
 describe('class example exTestFn', function() {
-  const classObj = new classMod.ModuleClass();
-  const exTestFnSpy = sinon.spy(classObj, 'exTestFn');
-  const result = classObj.exTestFn();
-  expect(exTestFnSpy).called;
-  expect(result).to.equal(EXT_DEP_STR);
+  beforeEach(function() {
+    const classObj = new classMod.ModuleClass();
+    this.exTestFnSpy = sinon.spy(classObj, 'exTestFn');
+    this.result = classObj.exTestFn();
+  });
+  afterEach(function() {
+    this.exTestFnSpy.restore();
+  });
+  it('should call exTestFn', function() {
+    expect(this.exTestFnSpy).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal(EXT_DEP_STR);
+  });
 });

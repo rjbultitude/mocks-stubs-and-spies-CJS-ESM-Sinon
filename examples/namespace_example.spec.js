@@ -14,19 +14,33 @@ describe('namespace example someFn', function() {
 });
 
 describe('namespace example testFn', function() {
+  beforeEach(function() {
+    this.someFnStub = sinon.stub(nameSpaceMod, 'someFn').returns('not real');
+    this.result = nameSpaceMod.testFn(this.someFnStub);
+  });
+  afterEach(function() {
+    this.someFnStub.restore();
+  });
   it('should call someFn', function() {
-    const someFnStub = sinon.stub(nameSpaceMod, 'someFn').returns('not real');
-    const result = nameSpaceMod.testFn(someFnStub);
-    expect(someFnStub).called;
-    expect(result).to.equal('not real');
+    expect(this.someFnStub).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal('not real');
   });
 });
 
 describe('namespace example exTestFn', function() {
+  beforeEach(function() {
+    this.externalDepSpy = sinon.spy(modB, 'externalDep');
+    this.result = nameSpaceMod.exTestFn();
+  });
+  afterEach(function() {
+    this.externalDepSpy.restore();
+  });
   it('should call externalDep', function() {
-    const externalDepSpy = sinon.spy(modB, 'externalDep');
-    const result = nameSpaceMod.exTestFn();
-    expect(externalDepSpy).called;
-    expect(result).to.equal(EXT_DEP_STR);
+    expect(this.externalDepSpy).called;
+  });
+  it('should return ', function() {
+    expect(this.result).to.equal(EXT_DEP_STR);
   });
 });
