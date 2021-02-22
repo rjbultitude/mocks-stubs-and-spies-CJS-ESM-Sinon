@@ -29,7 +29,7 @@ describe('self import testFn', function() {
   });
 });
 
-describe('namespace example exTestFn', function() {
+describe('self import example exTestFn', function() {
   beforeEach(function() {
     this.externalDepSpy = sinon.spy(module_B, 'externalDep');
     this.result = selfImportMod.exTestFn();

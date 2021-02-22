@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "author": "Richard Bultitude",
   "license": "MIT",
   "scripts": {
@@ -22,9 +23,6 @@
   "mocha": {
     "watch-files": [
       "**/*.spec.js"
-    ],
-    "require": [
-      "@babel/register"
     ]
   }
 }

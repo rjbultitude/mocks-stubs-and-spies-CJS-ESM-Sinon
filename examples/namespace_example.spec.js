@@ -2,21 +2,21 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import { namespaceMod } from './namespace_example.js';
+import { namespaceMethods } from './namespace_example.js';
 import { modBMethods } from './module_B.js';
 import { EXT_DEP_STR } from '../utils/constants.js';
 
 describe('namespace example someFn', function() {
   it('should return arg', function() {
     const testString = 'test string';
-    expect(namespaceMod.someFn(testString)).to.equal(testString);
+    expect(namespaceMethods.someFn(testString)).to.equal(testString);
   });
 });
 
 describe('namespace example testFn', function() {
   beforeEach(function() {
-    this.someFnStub = sinon.stub(namespaceMod, 'someFn').returns('not real');
-    this.result = namespaceMod.testFn(this.someFnStub);
+    this.someFnStub = sinon.stub(namespaceMethods, 'someFn').returns('not real');
+    this.result = namespaceMethods.testFn(this.someFnStub);
   });
   afterEach(function() {
     this.someFnStub.restore();
@@ -38,11 +38,11 @@ describe('namespace example exTestFn', function() {
     this.externalDepSpy.restore();
   });
   it('should call externalDep', function() {
-    namespaceMod.exTestFn();
+    namespaceMethods.exTestFn();
     expect(this.externalDepSpy).called;
   });
   it('should return ', function() {
-    const result = namespaceMod.exTestFn();
+    const result = namespaceMethods.exTestFn();
     expect(result).to.equal(EXT_DEP_STR);
   });
 });

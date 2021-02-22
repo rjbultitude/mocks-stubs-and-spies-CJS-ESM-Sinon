@@ -8,7 +8,7 @@ export function someFn(str) {
 export function testFn() {
   const realStr = 'real function call';
   console.log('realStr', realStr);
-  return namespaceMod.someFn(realStr);
+  return namespaceMethods.someFn(realStr);
 }
 
 export function exTestFn() {
@@ -16,7 +16,7 @@ export function exTestFn() {
   return modBMethods.externalDep();
 }
 
-export const namespaceMod = {
+export const namespaceMethods = {
   someFn,
   testFn,
   exTestFn,
