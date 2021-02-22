@@ -7,14 +7,8 @@ The purpose of this repo is to demonstrate that this problem exists with ESM (EC
 This repo contains two modules: module_A and module_B. In module_A there is a function, testFn, which calls someFn. When testFn is under test it is not possible to spy on or stub someFn unless it is made available via namespacing or a 3rd party library such as Rewire.
 
 ## Run in ES Modules mode
-Add the property `type` to package.json and set the value to `module`
+Add the property `type` to package.json and set the value to `module` then change the npm script `test` from `npm run test:commonjs` to `npm run test:esm`
 
 ## Run in CommonJS mode
-Remove the `type` property from package.json and add
-```
-"require": [
-  "@babel/register"
-]
-```
-to the `mocha` property
+Remove the `type` property from package.json and change the npm script `test` from `npm run test:esm` to `npm run test:commonjs`
 
