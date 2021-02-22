@@ -1,14 +1,14 @@
 # An ESM demo for the problem of using stubs and spies for same module dependencies in JavaScript
 
-The problem statement is this: it is not possible to stub (mock in Jest) or spy on a function, which is called by another in the same module.
+There are two problems that can be encountered when usuing mocks, stubs and spies with CommonJS and ES modules respectively. With CommonJS it is not possible to mock, stub or spy on a function, which is called by another in the same module. With ES modules, it is not possible to mock, stub or spy on a function a named or asterisked import. 
 
-The purpose of this repo is to demonstrate that this problem exists with ESM (ECMAScript modules). it is commonly reported that the problem is with CommonJS, Babel or a testing library such as Jest or Sinon. This proves it is a problem in the way exported functions are referenced in memory.
-
-This repo contains two modules: module_A and module_B. In module_A there is a function, testFn, which calls someFn. When testFn is under test it is not possible to spy on or stub someFn unless it is made available via namespacing or a 3rd party library such as Rewire.
+The purpose of this repo is to demonstrate these problems. Run the test suite using the instructions below.
 
 ## Run in ES Modules mode
-Add the property `type` to package.json and set the value to `module` then change the npm script `test` from `npm run test:commonjs` to `npm run test:esm`
+Add the property `type` to package.json and set the value to `module` then change the npm script `test` from `npm run test:commonjs` to `npm run test:esm`.
+Then run `npm test` and examine the results.
 
 ## Run in CommonJS mode
 Remove the `type` property from package.json and change the npm script `test` from `npm run test:esm` to `npm run test:commonjs`
+Then run `npm test` and examine the results.
 
