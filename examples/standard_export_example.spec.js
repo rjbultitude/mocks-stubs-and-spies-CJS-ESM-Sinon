@@ -31,14 +31,14 @@ describe('standard export example testFn', function() {
 
 describe('standard export example exTestFn', function() {
   beforeEach(function() {
-    this.externalDepSpy = sinon.spy(module_B, 'externalDep');
+    this.externalDepStub = sinon.stub(module_B, 'externalDep').returns(EXT_DEP_STR);
   });
   afterEach(function() {
-    this.externalDepSpy.restore();
+    this.externalDepStub.restore();
   });
   it('should call externalDep', function() {
     stndExportMod.exTestFn();
-    expect(this.externalDepSpy).called;
+    expect(this.externalDepStub).called;
   });
   it('should return ', function() {
     const result = stndExportMod.exTestFn();

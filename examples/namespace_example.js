@@ -1,4 +1,4 @@
-import modB, { externalDep } from './module_b.js';
+import { modBMethods } from './module_B.js';
 
 export function someFn(str) {
   console.log('str', str);
@@ -13,7 +13,7 @@ export function testFn() {
 
 export function exTestFn() {
   console.log('ext dep called');
-  return externalDep();
+  return modBMethods.externalDep();
 }
 
 export const namespaceMod = {

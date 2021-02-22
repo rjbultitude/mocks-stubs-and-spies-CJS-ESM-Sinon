@@ -1,4 +1,4 @@
-import { externalDep } from './module_b.js';
+import { externalDep } from './module_B.js';
 
 export function someFn(str) {
   console.log('str', str);

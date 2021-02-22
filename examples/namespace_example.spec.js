@@ -5,8 +5,6 @@ chai.use(sinonChai);
 import { namespaceMod } from './namespace_example.js';
 import { modBMethods } from './module_B.js';
 import { EXT_DEP_STR } from '../utils/constants.js';
-console.log('modBMethods', modBMethods);
-console.log('modBMethods.externalDep()', modBMethods.externalDep());
 
 describe('namespace example someFn', function() {
   it('should return arg', function() {
@@ -34,7 +32,7 @@ describe('namespace example testFn', function() {
 describe('namespace example exTestFn', function() {
   beforeEach(function() {
     this.externalDepSpy = sinon.spy(modBMethods, 'externalDep');
-    console.log('externalDepSpy', externalDepSpy);
+    console.log('this.externalDepSpy', this.externalDepSpy);
   });
   afterEach(function() {
     this.externalDepSpy.restore();
