@@ -1,20 +1,19 @@
 {
   "name": "same-module-stubs",
   "version": "1.0.0",
-  "description": "",
+  "description": "A demo of stubs and spies with CommonJS and ES modules",
   "main": "index.js",
-  "type": "module",
   "author": "Richard Bultitude",
   "license": "MIT",
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive **/*.spec.js",
+    "test": "npm run test:commonjs",
+    "test:commonjs": "NODE_ENV=test mocha -r esm --recursive **/*.spec.js",
+    "test:esm": "NODE_ENV=test mocha --recursive **/*.spec.js",
     "start": "http-server"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
-    "@babel/register": "^7.12.13",
     "chai": "^4.3.0",
+    "esm": "^3.2.25",
     "http-server": "^0.12.3",
     "mocha": "^8.3.0",
     "sinon": "^9.2.4",
