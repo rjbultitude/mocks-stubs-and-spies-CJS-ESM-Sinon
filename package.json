@@ -7,7 +7,7 @@
   "author": "Richard Bultitude",
   "license": "MIT",
   "scripts": {
-    "test": "npm run test:commonjs",
+    "test": "npm run test:esm",
     "test:commonjs": "NODE_ENV=test mocha -r esm --recursive **/*.spec.js",
     "test:esm": "NODE_ENV=test mocha --recursive **/*.spec.js",
     "start": "http-server"
