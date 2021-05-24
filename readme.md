@@ -1,7 +1,7 @@
 # A demo of two problems with mocks, stubs and spies in modular JavaScript
 
 ## Problem number one
-When we use ES6's import/export syntax to share individual functions, but compile to CommonJS, it's not possible to mock, stub or spy on a function that's called by another in the same module.
+When we use ES6's import/export syntax to share individual functions, but compile to CommonJS, it's not possible to stub or spy on a function that's called by another in the same module.
 
 ## Problem number two
 When using native ES modules, you cannot stub or spy on named imports from any module.
